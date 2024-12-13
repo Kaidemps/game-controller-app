@@ -25,7 +25,8 @@
         .controller {
             display: grid;
             grid-template-areas:
-                "ab x y"
+                "x y"
+                "b a"
                 "left stick right";
             grid-gap: 30px;
             justify-content: center;
@@ -106,10 +107,10 @@
 <body>
     <h1>Kai's Controller</h1>
     <div class="controller">
-        <button class="button" id="ab">A</button>
         <button class="button" id="x">X</button>
         <button class="button" id="y">Y</button>
         <button class="button" id="b">B</button>
+        <button class="button" id="ab">A</button>
         <button class="button" id="left">←</button>
         <div class="stick" id="left-stick">
             <div class="joystick" id="left-joystick"></div>
