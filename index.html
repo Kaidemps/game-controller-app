@@ -8,7 +8,7 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
-            background-color: #121212;
+            background-color: #0e7a0d;
             color: white;
             margin: 0;
             padding: 0;
@@ -24,10 +24,8 @@
 
         .controller {
             display: grid;
-            grid-template-areas:
-                "x y"
-                "b a"
-                "left stick right";
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 100px 100px 100px;
             grid-gap: 30px;
             justify-content: center;
             margin: 50px auto;
@@ -107,16 +105,19 @@
 <body>
     <h1>Kai's Controller</h1>
     <div class="controller">
-        <button class="button" id="x">X</button>
-        <button class="button" id="y">Y</button>
-        <button class="button" id="b">B</button>
-        <button class="button" id="ab">A</button>
-        <button class="button" id="left">←</button>
-        <div class="stick" id="left-stick">
+        <!-- Top row buttons -->
+        <button class="button" id="x" style="grid-column: 1; grid-row: 1;">X</button>
+        <button class="button" id="y" style="grid-column: 3; grid-row: 1;">Y</button>
+
+        <!-- Bottom row buttons -->
+        <button class="button" id="b" style="grid-column: 1; grid-row: 2;">B</button>
+        <button class="button" id="ab" style="grid-column: 3; grid-row: 2;">A</button>
+
+        <!-- Joysticks -->
+        <div class="stick" id="left-stick" style="grid-column: 1; grid-row: 3;">
             <div class="joystick" id="left-joystick"></div>
         </div>
-        <button class="button" id="right">→</button>
-        <div class="stick" id="right-stick">
+        <div class="stick" id="right-stick" style="grid-column: 3; grid-row: 3;">
             <div class="joystick" id="right-joystick"></div>
         </div>
     </div>
