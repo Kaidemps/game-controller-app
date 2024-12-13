@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Controller</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #282c34;
+            color: white;
+        }
+
+        .controller {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-gap: 15px;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .button {
+            width: 100px;
+            height: 100px;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .button:active {
+            transform: scale(0.9);
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Web Game Controller</h1>
+    <p>Press the buttons below!</p>
+    <div class="controller">
+        <button class="button" id="up">Up</button>
+        <button class="button" id="left">Left</button>
+        <button class="button" id="right">Right</button>
+        <button class="button" id="down">Down</button>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll(".button");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", () => {
+                alert(`Button ${button.id.toUpperCase()} pressed!`);
+            });
+        });
+    </script>
+</body>
+</html>
