@@ -10,6 +10,8 @@
             text-align: center;
             background-color: #121212;
             color: white;
+            margin: 0;
+            padding: 0;
         }
 
         h1 {
@@ -28,31 +30,49 @@
             grid-gap: 30px;
             justify-content: center;
             margin: 50px auto;
-            max-width: 350px;
+            max-width: 400px;
+            position: relative;
         }
 
+        /* Xbox button styles */
         .button {
             width: 80px;
             height: 80px;
-            background-color: #4caf50;
             border: none;
             border-radius: 50%;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: bold;
             cursor: pointer;
             transition: transform 0.1s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Button colors based on Xbox controller colors */
+        #ab {
+            background-color: #107c10; /* Green */
+        }
+
+        #x {
+            background-color: #1e5fa2; /* Blue */
+        }
+
+        #y {
+            background-color: #ffb81c; /* Yellow */
+        }
+
+        #b {
+            background-color: #e60012; /* Red */
         }
 
         .button:active {
             transform: scale(0.9);
-            background-color: #45a049;
         }
 
-        #ab, #x, #y {
-            font-size: 1.5rem;
-        }
-
+        /* Stick layout */
         .stick {
             width: 100px;
             height: 100px;
@@ -77,6 +97,10 @@
             transform: scale(1.2);
         }
 
+        #status {
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -85,6 +109,7 @@
         <button class="button" id="ab">A</button>
         <button class="button" id="x">X</button>
         <button class="button" id="y">Y</button>
+        <button class="button" id="b">B</button>
         <button class="button" id="left">←</button>
         <div class="stick" id="left-stick">
             <div class="joystick" id="left-joystick"></div>
@@ -97,17 +122,20 @@
     <p id="status"></p>
 
     <script>
+        // Get references to all the buttons and joysticks
         const buttons = document.querySelectorAll(".button");
         const status = document.querySelector("#status");
         const leftJoystick = document.querySelector("#left-joystick");
         const rightJoystick = document.querySelector("#right-joystick");
 
+        // Add event listeners to the buttons
         buttons.forEach(button => {
             button.addEventListener("click", () => {
                 status.textContent = `Button ${button.id.toUpperCase()} pressed!`;
             });
         });
 
+        // Function to move the joystick when dragged
         function moveJoystick(joystick, event) {
             const stick = joystick.parentElement;
             const rect = stick.getBoundingClientRect();
@@ -120,6 +148,7 @@
             joystick.style.transform = `translate(${Math.min(distance, 30)}px, ${Math.min(distance, 30)}px)`;
         }
 
+        // Add event listeners to the joysticks for mouse drag movement
         leftJoystick.addEventListener("mousedown", () => {
             leftJoystick.classList.add("active");
             document.addEventListener("mousemove", (event) => moveJoystick(leftJoystick, event));
