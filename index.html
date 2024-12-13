@@ -26,24 +26,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
+            flex-direction: row; /* Arrange everything horizontally */
             margin-top: 50px;
         }
 
-        .buttons {
+        .button-container {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            margin-right: 50px; /* Move buttons to the right */
-        }
-
-        .button-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr 1fr 1fr 1fr;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 20px;
+            margin-right: 50px; /* Space between buttons and sticks */
         }
 
         /* Xbox button styles */
@@ -60,8 +51,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            margin: 10px;
             text-align: center;
-            margin: 0 auto;
         }
 
         /* Button colors based on Xbox controller colors */
@@ -88,9 +79,9 @@
         /* Stick layout */
         .stick-container {
             display: flex;
-            justify-content: space-between;
-            width: 300px;
-            margin-top: 50px;
+            flex-direction: column; /* Align sticks vertically */
+            justify-content: center;
+            align-items: center;
         }
 
         .stick {
@@ -126,8 +117,8 @@
 <body>
     <h1>Kai's Controller</h1>
     <div class="controller">
-        <!-- Buttons on the right side -->
-        <div class="buttons">
+        <!-- Buttons on the right side in a vertical layout -->
+        <div class="button-container">
             <button class="button" id="y">Y</button>
             <button class="button" id="x">X</button>
             <button class="button" id="b">B</button>
@@ -195,3 +186,4 @@
     </script>
 </body>
 </html>
+
