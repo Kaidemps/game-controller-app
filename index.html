@@ -8,7 +8,7 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
-            background-color: #0e7a0d;
+            background-color: #0e7a0d; /* Xbox Green */
             color: white;
             margin: 0;
             padding: 0;
@@ -24,12 +24,13 @@
 
         .controller {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: 100px 100px 100px;
-            grid-gap: 30px;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            gap: 20px;
             justify-content: center;
-            margin: 50px auto;
+            margin-top: 50px;
             max-width: 400px;
+            margin: 0 auto;
             position: relative;
         }
 
@@ -105,11 +106,9 @@
 <body>
     <h1>Kai's Controller</h1>
     <div class="controller">
-        <!-- Top row buttons -->
+        <!-- Button Layout: Xbox Style -->
         <button class="button" id="x" style="grid-column: 1; grid-row: 1;">X</button>
         <button class="button" id="y" style="grid-column: 3; grid-row: 1;">Y</button>
-
-        <!-- Bottom row buttons -->
         <button class="button" id="b" style="grid-column: 1; grid-row: 2;">B</button>
         <button class="button" id="ab" style="grid-column: 3; grid-row: 2;">A</button>
 
@@ -169,3 +168,4 @@
     </script>
 </body>
 </html>
+
