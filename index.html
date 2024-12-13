@@ -82,3 +82,154 @@
     </script>
 </body>
 </html>
+<script>
+    const buttons = document.querySelectorAll(".button");
+    const status = document.querySelector("#status");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            status.textContent = `Button ${button.id.toUpperCase()} pressed!`;
+        });
+    });
+</script>
+<p id="status"></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kai's Controller</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background-color: #121212;
+            color: white;
+        }
+
+        h1 {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 3rem;
+            color: #00ff00;
+            text-shadow: 2px 2px 4px #000000;
+            margin-bottom: 20px;
+        }
+
+        .controller {
+            display: grid;
+            grid-template-areas:
+                "ab x y"
+                "left stick right";
+            grid-gap: 30px;
+            justify-content: center;
+            margin: 50px auto;
+            max-width: 350px;
+        }
+
+        .button {
+            width: 80px;
+            height: 80px;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .button:active {
+            transform: scale(0.9);
+            background-color: #45a049;
+        }
+
+        #ab, #x, #y {
+            font-size: 1.5rem;
+        }
+
+        .stick {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #333;
+            margin: auto;
+            position: relative;
+        }
+
+        .joystick {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #4caf50;
+            position: absolute;
+            top: 35%;
+            left: 35%;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .joystick.active {
+            transform: scale(1.2);
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Kai's Controller</h1>
+    <div class="controller">
+        <button class="button" id="ab">A</button>
+        <button class="button" id="x">X</button>
+        <button class="button" id="y">Y</button>
+        <button class="button" id="left">←</button>
+        <div class="stick" id="left-stick">
+            <div class="joystick" id="left-joystick"></div>
+        </div>
+        <button class="button" id="right">→</button>
+        <div class="stick" id="right-stick">
+            <div class="joystick" id="right-joystick"></div>
+        </div>
+    </div>
+    <p id="status"></p>
+
+    <script>
+        const buttons = document.querySelectorAll(".button");
+        const status = document.querySelector("#status");
+        const leftJoystick = document.querySelector("#left-joystick");
+        const rightJoystick = document.querySelector("#right-joystick");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", () => {
+                status.textContent = `Button ${button.id.toUpperCase()} pressed!`;
+            });
+        });
+
+        function moveJoystick(joystick, event) {
+            const stick = joystick.parentElement;
+            const rect = stick.getBoundingClientRect();
+            const stickCenterX = rect.left + rect.width / 2;
+            const stickCenterY = rect.top + rect.height / 2;
+            const deltaX = event.clientX - stickCenterX;
+            const deltaY = event.clientY - stickCenterY;
+            const distance = Math.min(30, Math.sqrt(deltaX * deltaX + deltaY * deltaY));
+
+            joystick.style.transform = `translate(${Math.min(distance, 30)}px, ${Math.min(distance, 30)}px)`;
+        }
+
+        leftJoystick.addEventListener("mousedown", () => {
+            leftJoystick.classList.add("active");
+            document.addEventListener("mousemove", (event) => moveJoystick(leftJoystick, event));
+        });
+
+        rightJoystick.addEventListener("mousedown", () => {
+            rightJoystick.classList.add("active");
+            document.addEventListener("mousemove", (event) => moveJoystick(rightJoystick, event));
+        });
+
+        document.addEventListener("mouseup", () => {
+            leftJoystick.classList.remove("active");
+            rightJoystick.classList.remove("active");
+            document.removeEventListener("mousemove", moveJoystick);
+        });
+    </script>
+</body>
+</html>
