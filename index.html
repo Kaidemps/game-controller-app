@@ -9,7 +9,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #0e7a0d; /* Xbox Green */
+            background-color: #1e3a8a; /* Christmas Blue */
             overflow: hidden;
             font-family: Arial, sans-serif;
             position: relative;
@@ -17,7 +17,7 @@
 
         h1 {
             text-align: center;
-            color: #ff0; /* Gold */
+            color: #fff; /* White text */
             font-size: 2.5rem;
             margin: 20px;
             text-shadow: 2px 2px 4px black;
@@ -36,7 +36,7 @@
             width: 80px;
             height: 80px;
             background-color: #333;
-            border: 2px solid black;
+            border: 3px solid black;
             border-radius: 50%;
             position: absolute;
         }
@@ -54,7 +54,8 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            border: 2px solid black;
+            border: 3px solid black;
+            background-color: #d62828; /* Christmas Red */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -62,92 +63,22 @@
             font-size: 1rem;
             font-weight: bold;
             position: absolute;
+            cursor: pointer;
+            transition: transform 0.1s;
         }
 
-        #a { background-color: #107c10; bottom: 20%; right: 10%; } /* Green */
-        #b { background-color: #e60012; bottom: 35%; right: 5%; } /* Red */
-        #x { background-color: #1e5fa2; bottom: 35%; right: 15%; } /* Blue */
-        #y { background-color: #ffb81c; bottom: 50%; right: 10%; } /* Yellow */
+        .button:active {
+            transform: scale(0.9); /* Press effect */
+        }
+
+        #a { bottom: 20%; right: 10%; } /* A Button */
+        #b { bottom: 35%; right: 5%; } /* B Button */
+        #x { bottom: 35%; right: 15%; } /* X Button */
+        #y { bottom: 50%; right: 10%; } /* Y Button */
 
         /* Trigger Buttons (LT, LB, RT, RB) */
         .trigger {
             width: 60px;
             height: 30px;
-            background-color: #555;
-            border: 2px solid black;
-            border-radius: 10px;
-            color: white;
-            font-size: 0.8rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-        }
-        #lb { top: 5%; left: 10%; } /* Left Bumper */
-        #lt { top: 5%; left: 20%; } /* Left Trigger */
-        #rb { top: 5%; right: 10%; } /* Right Bumper */
-        #rt { top: 5%; right: 20%; } /* Right Trigger */
-
-        /* Snowfall Animation */
-        .snowflake {
-            position: fixed;
-            top: -10px;
-            background-color: white;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            opacity: 0.7;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh);
-            }
-        }
-    </style>
-</head>
-<body>
-    <h1>Merry Christmas from Kai's Controller 🎮❄️</h1>
-    <div class="controller">
-        <!-- Joysticks -->
-        <div class="stick" id="left-stick"></div>
-        <div class="stick" id="right-stick"></div>
-
-        <!-- Buttons -->
-        <div class="button" id="a">A</div>
-        <div class="button" id="b">B</div>
-        <div class="button" id="x">X</div>
-        <div class="button" id="y">Y</div>
-
-        <!-- Trigger Buttons -->
-        <div class="trigger" id="lb">LB</div>
-        <div class="trigger" id="lt">LT</div>
-        <div class="trigger" id="rb">RB</div>
-        <div class="trigger" id="rt">RT</div>
-    </div>
-
-    <!-- Snowfall Script -->
-    <script>
-        function createSnowflake() {
-            const snowflake = document.createElement("div");
-            snowflake.classList.add("snowflake");
-            
-            // Random horizontal position and fall duration
-            snowflake.style.left = `${Math.random() * 100}vw`;
-            snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;
-            document.body.appendChild(snowflake);
-
-            // Remove the snowflake after it finishes falling
-            setTimeout(() => {
-                snowflake.remove();
-            }, 10000);
-        }
-
-        // Create snowflakes continuously
-        setInterval(createSnowflake, 100);
-    </script>
-</body>
-</html>
-
+            background-color: #d62828; /* Christmas Red */
+            border: 3px
